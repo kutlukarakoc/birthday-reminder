@@ -3,9 +3,10 @@ import { IPerson } from "../types"
 type IForm = {
     person: IPerson
     setPerson: React.Dispatch<React.SetStateAction<IPerson>>
+    addBirthday: () => void
 }
 
-const Form: React.FC<IForm> = ({person, setPerson}) => {
+const Form: React.FC<IForm> = ({person, setPerson, addBirthday}) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let name: string = e.target.name
@@ -26,13 +27,19 @@ const Form: React.FC<IForm> = ({person, setPerson}) => {
                     onChange={e => handleChange(e)}
                 />
                 <input 
-                    type="datetime-local"
+                    type="date"
                     name="date"
                     className="border border-black rounded-md outline-none p-2"
                     value={person.date}
                     onChange={e => handleChange(e)}
                 />
-                <button type="button" className="border border-black rounded-md outline-none p-2">Save</button>
+                <button 
+                    type="button"
+                    className="border border-black rounded-md outline-none p-2"
+                    onClick={addBirthday}    
+                >
+                    Save
+                </button>
             </div>
         </div>
     )

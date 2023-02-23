@@ -1,34 +1,18 @@
 import { useState } from "react"
 import Birthdays from "./components/Birthdays"
 import Form from "./components/Form"
-import { IPerson } from "./types"
+import { IPerson, IBirthdays } from "./types"
 
 const App: React.FC = () => {
 
     const [person, setPerson] = useState<IPerson>({name: '', date: ''})
-    /*
-        {
-            name: string
-            date: string
-            id?: number
-        }
-    */
+    const [birthdays, setBirthdays] = useState<IBirthdays[]>([])
 
-    const [birthdays, setBirthdays] = useState()
-    /* 
-        [
-            {
-                name: string,
-                date: string
-                id: number
-            },
-            {
-                name: string,
-                date: string
-                id: number
-            }
-        ]
-    */
+    const addBirthday = () => {
+        if(person) setBirthdays([...birthdays, {...person, id: birthdays.length + 1}])
+        /* clear inputs after save person */
+        setPerson({name: '', date: ''})
+    }
 
     return (
         <div className="flex flex-col h-full">
@@ -37,7 +21,7 @@ const App: React.FC = () => {
             </h1>
             <div className="flex justify-around items-center flex-1">
                 <Birthdays />
-                <Form person={person} setPerson={setPerson}/>
+                <Form person={person} setPerson={setPerson} addBirthday={addBirthday}/>
             </div>
         </div>
     )
