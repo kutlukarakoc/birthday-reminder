@@ -9,12 +9,12 @@ const App: React.FC = () => {
     const [birthdays, setBirthdays] = useState<IBirthdays[]>([])
 
     const addBirthday = () => {
+
+
         if(person) setBirthdays([...birthdays, {...person, id: birthdays.length + 1}])
         /* clear inputs after save person */
         setPerson({name: '', day: '', month: ''})
     }
-
-    console.log(birthdays);
 
     return (
         <div className="flex flex-col h-full">
@@ -22,7 +22,7 @@ const App: React.FC = () => {
                 Birthday Reminder
             </h1>
             <div className="flex justify-around items-center flex-1">
-                <Birthdays />
+                <Birthdays birthdays={birthdays}/>
                 <Form person={person} setPerson={setPerson} addBirthday={addBirthday}/>
             </div>
         </div>
