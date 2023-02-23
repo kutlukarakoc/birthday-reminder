@@ -5,14 +5,16 @@ import { IPerson, IBirthdays } from "./types"
 
 const App: React.FC = () => {
 
-    const [person, setPerson] = useState<IPerson>({name: '', date: ''})
+    const [person, setPerson] = useState<IPerson>({name: '', day: '', month: ''})
     const [birthdays, setBirthdays] = useState<IBirthdays[]>([])
 
     const addBirthday = () => {
         if(person) setBirthdays([...birthdays, {...person, id: birthdays.length + 1}])
         /* clear inputs after save person */
-        setPerson({name: '', date: ''})
+        setPerson({name: '', day: '', month: ''})
     }
+
+    console.log(birthdays);
 
     return (
         <div className="flex flex-col h-full">

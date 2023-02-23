@@ -28,19 +28,19 @@ const Form: React.FC<IForm> = ({ person, setPerson, addBirthday }) => {
                 />
                 <div className="w-full flex justify-between">
                     <input
-                        type="text"
+                        type="number"
                         name="day"
                         placeholder="Enter day"
                         className="border border-black rounded-md outline-none p-2 w-28 placeholder:text-sm"
-                        value={person.date}
+                        value={person.day}
                         onChange={e => handleChange(e)}
                     />
                     <input
-                        type="text"
+                        type="number"
                         name="month"
                         placeholder="Enter month"
                         className="border border-black rounded-md outline-none p-2 w-28 placeholder:text-sm"
-                        value={person.date}
+                        value={person.month}
                         onChange={e => handleChange(e)}
                     />
                 </div>
