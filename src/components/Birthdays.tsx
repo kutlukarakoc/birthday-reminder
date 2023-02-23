@@ -1,7 +1,9 @@
-const Birthdays: React.FC = () => {
+
+
+const Birthdays: React.FC = ({}) => {
     return (
-        <div className="min-h-[250px] w-96 flex flex-col items-center justify-center gap-6 px-5 border-2 border-black rounded-md">
-            <ul className="w-full h-full flex flex-col items-start gap-4">
+        <div className="min-h-[250px] h-72 w-96 flex flex-col items-center justify-center gap-6 px-5 border-2 border-black rounded-md">
+            <ul className="w-full h-full flex flex-col justify-center items-start gap-4">
                 <li className="w-full flex justify-between px-7">
                     <div>Person 1</div>
                     <div>Birthday</div>
