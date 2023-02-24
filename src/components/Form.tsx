@@ -21,7 +21,7 @@ const Form: React.FC<IForm> = ({ person, setPerson, addBirthday }) => {
                 <input
                     type="text"
                     name="name"
-                    placeholder="Enter name"
+                    placeholder="Name"
                     className="border border-black rounded-md outline-none p-2 w-60 placeholder:text-sm"
                     value={person.name}
                     onChange={e => handleChange(e)}
@@ -30,7 +30,7 @@ const Form: React.FC<IForm> = ({ person, setPerson, addBirthday }) => {
                     <input
                         type="number"
                         name="day"
-                        placeholder="Enter day"
+                        placeholder="Day(1-31)"
                         className="border border-black rounded-md outline-none p-2 w-28 placeholder:text-sm"
                         value={person.day}
                         onChange={e => handleChange(e)}
@@ -38,7 +38,7 @@ const Form: React.FC<IForm> = ({ person, setPerson, addBirthday }) => {
                     <input
                         type="number"
                         name="month"
-                        placeholder="Enter month"
+                        placeholder="Month(1-12)"
                         className="border border-black rounded-md outline-none p-2 w-28 placeholder:text-sm"
                         value={person.month}
                         onChange={e => handleChange(e)}

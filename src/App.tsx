@@ -5,13 +5,22 @@ import { IPerson, IBirthdays } from "./types"
 
 const App: React.FC = () => {
 
-    const [person, setPerson] = useState<IPerson>({name: '', day: '', month: ''})
-    const [birthdays, setBirthdays] = useState<IBirthdays[]>([])
+    const [person, setPerson] = useState<IPerson>({ name: '', day: '', month: '' })
+
+    /* if there are already some saved birthday in storage, set them as a initial state, else set empty array */
+    const storageItem = localStorage.getItem('birthdays')
+    const storageArray = storageItem ? JSON.parse(storageItem) : []
+    const [birthdays, setBirthdays] = useState<IBirthdays[]>(storageArray)
 
     const addBirthday = () => {
-        if(person) setBirthdays([...birthdays, {...person, id: birthdays.length + 1}])
+        if (person) {
+            setBirthdays([...birthdays, { ...person, id: birthdays.length + 1 }])
+            console.log(birthdays);
+            localStorage.setItem('birthdays', JSON.stringify([...birthdays, { ...person, id: birthdays.length + 1 }]))
+        }
+        
         /* clear inputs after save person */
-        setPerson({name: '', day: '', month: ''})
+        setPerson({ name: '', day: '', month: '' })
     }
 
     return (
@@ -20,8 +29,8 @@ const App: React.FC = () => {
                 Birthday Reminder
             </h1>
             <div className="flex justify-around items-center flex-1">
-                <Birthdays birthdays={birthdays}/>
-                <Form person={person} setPerson={setPerson} addBirthday={addBirthday}/>
+                <Birthdays birthdays={birthdays} />
+                <Form person={person} setPerson={setPerson} addBirthday={addBirthday} />
             </div>
         </div>
     )

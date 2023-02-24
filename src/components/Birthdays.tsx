@@ -1,4 +1,5 @@
 import { IBirthdays } from "../types"
+import { useEffect, useCallback } from "react"
 
 type IBirthdayProps = {
     birthdays: IBirthdays[]
@@ -6,7 +7,7 @@ type IBirthdayProps = {
 
 const Birthdays: React.FC<IBirthdayProps> = ({ birthdays }) => {
 
-    const countDown = (personDay: string | number, personMonth: string | number): string => {
+    const countDown = useCallback((personDay: string | number, personMonth: string | number): string => {
         const birthDate: string | number = personDay
         const birthMonth: string | number = personMonth
         const today: any = new Date()
@@ -31,7 +32,12 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays }) => {
         let seconds: number = Math.floor(remaining / 1000) % 60
 
         return `${days < 10 ? '0' + days : days} Days - ${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`
-    }
+    }, [])
+
+    useEffect(() => {
+
+
+    }, []);
 
     return (
         <div className="h-72 w-96 flex flex-col items-center justify-center gap-6 px-5 border-2 border-black rounded-md">
@@ -44,10 +50,6 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays }) => {
                         </li>
                     ))
                 }
-                <li className="w-full flex justify-between px-7">
-                    <div>Person 1</div>
-                    <div>Birthday</div>
-                </li>
             </ul>
         </div>
     )
