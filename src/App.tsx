@@ -13,9 +13,9 @@ const App: React.FC = () => {
     const [birthdays, setBirthdays] = useState<IBirthdays[]>(storageArray)
 
     const addBirthday = () => {
+        /* if there is person data, save it into birthdays state and storage */
         if (person) {
-            setBirthdays([...birthdays, { ...person, id: birthdays.length + 1 }])
-            console.log(birthdays);
+            setBirthdays([...birthdays, { name: person.name, day: person.day, month: person.month, id: birthdays.length + 1 }])
             localStorage.setItem('birthdays', JSON.stringify([...birthdays, { ...person, id: birthdays.length + 1 }]))
         }
         

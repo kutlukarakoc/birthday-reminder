@@ -3,5 +3,8 @@ export type IPerson = {
 }
 
 export type IBirthdays = {
-    [key: string]: string | number
+    name: string
+    day: string
+    month: string
+    id: number
 }
