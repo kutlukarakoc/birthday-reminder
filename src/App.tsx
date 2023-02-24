@@ -9,11 +9,11 @@ const App: React.FC = () => {
     const [birthdays, setBirthdays] = useState<IBirthdays[]>([])
 
     const addBirthday = () => {
-
-
         if(person) setBirthdays([...birthdays, {...person, id: birthdays.length + 1}])
         /* clear inputs after save person */
         setPerson({name: '', day: '', month: ''})
+
+        console.log(person);
     }
 
     return (
