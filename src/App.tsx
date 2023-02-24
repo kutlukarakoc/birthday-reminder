@@ -12,8 +12,6 @@ const App: React.FC = () => {
         if(person) setBirthdays([...birthdays, {...person, id: birthdays.length + 1}])
         /* clear inputs after save person */
         setPerson({name: '', day: '', month: ''})
-
-        console.log(person);
     }
 
     return (
