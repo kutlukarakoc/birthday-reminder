@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Birthdays from "./components/Birthdays"
 import Form from "./components/Form"
 import { IPerson, IBirthdays } from "./types"
@@ -14,22 +14,26 @@ const App: React.FC = () => {
 
     const addBirthday = () => {
         /* if there is person data, save it into birthdays state and storage */
-        if (person) {
-            setBirthdays([...birthdays, { name: person.name, day: person.day, month: person.month, id: birthdays.length + 1 }])
-            localStorage.setItem('birthdays', JSON.stringify([...birthdays, { ...person, id: birthdays.length + 1 }]))
-        }
+        if (person) setBirthdays([...birthdays, { name: person.name, day: person.day, month: person.month, id: birthdays.length + 1 }])
         
         /* clear inputs after save person */
         setPerson({ name: '', day: '', month: '' })
     }
 
+    const removeBirthday = (personId: number) => setBirthdays(birthdays.filter(person => person.id !== personId))
+
+    /* update local storage depends on birthday state changes*/
+    useEffect(() => {
+        localStorage.setItem('birthdays', JSON.stringify(birthdays))
+    }, [birthdays])
+
     return (
         <div className="flex flex-col h-full">
-            <h1 className="text-3xl font-bold bg-green-400 text-center p-4">
-                Birthday Reminder
+            <h1 className="text-3xl font-bold text-center mt-4">
+                Simple Birthday Reminder
             </h1>
             <div className="flex justify-around items-center flex-1">
-                <Birthdays birthdays={birthdays} />
+                <Birthdays birthdays={birthdays} removeBirthday={removeBirthday}/>
                 <Form person={person} setPerson={setPerson} addBirthday={addBirthday} />
             </div>
         </div>

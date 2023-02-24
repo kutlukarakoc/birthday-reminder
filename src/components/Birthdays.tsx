@@ -2,16 +2,17 @@ import { IBirthdays } from "../types"
 
 type IBirthdayProps = {
     birthdays: IBirthdays[]
+    removeBirthday: (personId: number) => void
 }
 
-const Birthdays: React.FC<IBirthdayProps> = ({ birthdays }) => {
+const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
 
-    const countDown = (personDay: string, personMonth: string) => {
+    const countDown = (personName: string ,personDay: string, personMonth: string) => {
         const birthDate: string = personDay
         const birthMonth: string = personMonth
         const today: any = new Date()
         let nextYear: number
-        let birthDayText: string = 'Happy birthday!!!!'
+        let birthDayText = <div className="bg-green-400 py-6">Happy Birthday {personName} !!!!</div>
 
         /* if birthday already passed countdown from next year */
         /* if day and month both equals with todays time, return birthDayText */
@@ -32,21 +33,26 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays }) => {
         let formattedCountDownDate: string = `${formattedDay}/${formattedMonth}/${nextYear}`
 
         return (
-            <div className="text-center">
-                {days < 10 ? '0' + days : days} days left. <br />
-                Next birthday: {formattedCountDownDate}
+            <div className={days < 7 ? 'bg-red-400' : 'bg-blue-400'}>
+                <div className="text-lg">{personName}</div>
+                <div>
+                    {days < 10 ? '0' + days : days} days left. <br />
+                    Next birthday: {formattedCountDownDate}
+                </div>
             </div>
         )
     }
 
     return (
-        <div className="h-72 w-80 flex flex-col items-center justify-center gap-6 px-5 border-2 border-black rounded-md">
+        <div className="h-72 w-80 flex flex-col items-center justify-center gap-6 border-2 border-black rounded-md">
             <ul className="w-full h-full flex flex-col justify-center items-start gap-4">
                 {
                     birthdays.map(person => (
-                        <li className="w-full flex flex-col items-center" key={person.id}>
-                            <div>{person.name}</div>
-                            <div>{countDown(person.day, person.month)}</div>
+                        <li className="w-full flex items-center" key={person.id}>
+                            <div className="w-full text-center relative">
+                                {countDown(person.name, person.day, person.month)}
+                                <button type="button" className="absolute right-2 top-1 text-lg bg-black text-white rounded-full w-6 h-6 grid place-content-center pb-0.5 z-10" onClick={() => removeBirthday(person.id)}>x</button>
+                            </div>
                         </li>
                     ))
                 }
