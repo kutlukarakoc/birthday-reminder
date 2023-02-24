@@ -51,7 +51,7 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
                         <li className="w-full flex items-center" key={person.id}>
                             <div className="w-full text-center relative">
                                 {countDown(person.name, person.day, person.month)}
-                                <button type="button" className="absolute right-2 top-1 text-lg bg-black text-white rounded-full w-6 h-6 grid place-content-center pb-0.5 z-10" onClick={() => removeBirthday(person.id)}>x</button>
+                                <button type="button" className="absolute right-2 top-1 text-lg bg-black text-white rounded-full w-5 h-5 grid place-content-center pb-0.5 z-10" onClick={() => removeBirthday(person.id)}>x</button>
                             </div>
                         </li>
                     ))
