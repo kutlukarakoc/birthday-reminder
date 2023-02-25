@@ -1,3 +1,4 @@
+import React from "react"
 import { IBirthdays } from "../types"
 
 type IBirthdayProps = {
@@ -26,7 +27,7 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
 
         const countDownDate: any = new Date(`${nextYear}-${birthMonth}-${birthDate} 00:00:00`)
         const remaining: number = countDownDate - today
-        let days: number = Math.floor(remaining / (1000 * 60 * 60 * 24))
+        let days: number = Math.floor(remaining / (1000 * 60 * 60 * 24)) + 1
 
         let formattedDay: string = parseInt(birthDate) < 10 ? '0' + birthDate : birthDate
         let formattedMonth: string = parseInt(birthMonth) < 10 ? '0' + birthMonth : birthMonth
@@ -34,7 +35,7 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
 
         return (
             <li className="w-full flex items-center" style={{order: days}}>
-                <div className="w-full">
+                <div className="w-full relative">
                     <div className={days < 7 ? 'bg-red-400' : 'bg-blue-400'}>
                         <div className="text-lg">{personName}</div>
                         <div>
@@ -48,14 +49,18 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
         )
     }
 
+    console.log(birthdays.length)
+
     return (
-        <div className="h-72 w-80 flex flex-col items-center justify-center gap-6 border-2 border-black rounded-md">
-            <ul className="w-full h-full flex flex-col justify-center items-start gap-4">
+        <div className=" w-80 flex flex-col items-center justify-center gap-6 border-2 border-black rounded-md">
+            <ul className="w-full h-[444px] flex flex-col justify-start items-start gap-4 overflow-y-auto">
                 {
                     birthdays.map(person => (
-                        <div key={person.id} className="w-full text-center relative">{countDown(person.id, person.name, person.day, person.month)}</div>
+                        <React.Fragment key={person.id}>{countDown(person.id, person.name, person.day, person.month)}</React.Fragment>
                     ))
                 }
+
+                {birthdays.length === 0 && <div className="text-center p-4 w-full">Birthdays will be display here</div>}
             </ul>
         </div>
     )

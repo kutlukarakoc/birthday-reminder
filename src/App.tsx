@@ -14,7 +14,7 @@ const App: React.FC = () => {
 
     const addBirthday = () => {
         /* if there is person data, save it into birthdays state and storage */
-        if (person) setBirthdays([...birthdays, { name: person.name, day: person.day, month: person.month, id: birthdays.length + 1 }])
+        if (person) setBirthdays([...birthdays, { name: person.name, day: person.day, month: person.month, id: Date.now() + Math.random() }])
         
         /* clear inputs after save person */
         setPerson({ name: '', day: '', month: '' })
@@ -32,7 +32,7 @@ const App: React.FC = () => {
             <h1 className="text-3xl font-bold text-center mt-4">
                 Simple Birthday Reminder
             </h1>
-            <div className="flex justify-around items-center flex-1">
+            <div className="h-full flex justify-center items-center gap-20">
                 <Birthdays birthdays={birthdays} removeBirthday={removeBirthday}/>
                 <Form person={person} setPerson={setPerson} addBirthday={addBirthday} />
             </div>
