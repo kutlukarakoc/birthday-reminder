@@ -35,7 +35,7 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
 
         return (
             <li className="w-full flex items-center" style={{order: days}}>
-                <div className="w-full relative">
+                <div className="w-full relative text-center">
                     <div className={days < 7 ? 'bg-red-400' : 'bg-blue-400'}>
                         <div className="text-lg">{personName}</div>
                         <div>
