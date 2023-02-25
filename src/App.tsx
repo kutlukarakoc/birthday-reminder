@@ -29,7 +29,7 @@ const App: React.FC = () => {
 
     return (
         <div className="flex flex-col h-full">
-            <h1 className="text-3xl font-bold text-center mt-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-center mt-4">
                 Simple Birthday Reminder
             </h1>
             <div className="h-full flex justify-center items-center gap-10 sm:gap-20 sm:flex-row flex-col-reverse mt-10 sm:mt-0">
