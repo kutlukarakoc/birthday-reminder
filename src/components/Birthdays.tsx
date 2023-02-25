@@ -25,7 +25,7 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
             nextYear = new Date().getFullYear()
         }
 
-        const countDownDate: any = new Date(`${nextYear}-${birthMonth}-${birthDate} 00:00:00`)
+        const countDownDate: any = new Date(`${nextYear}/${birthMonth}/${birthDate} 00:00:00`)
         const remaining: number = countDownDate - today
         let days: number = Math.floor(remaining / (1000 * 60 * 60 * 24)) + 1
 
@@ -48,8 +48,6 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
             </li >
         )
     }
-
-    console.log(birthdays.length)
 
     return (
         <div className=" w-80 flex flex-col items-center justify-center gap-6 border-2 border-black rounded-md">
