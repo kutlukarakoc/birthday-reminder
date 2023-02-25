@@ -32,7 +32,7 @@ const App: React.FC = () => {
             <h1 className="text-3xl font-bold text-center mt-4">
                 Simple Birthday Reminder
             </h1>
-            <div className="h-full flex justify-center items-center gap-20">
+            <div className="h-full flex justify-center items-center gap-10 sm:gap-20 sm:flex-row flex-col-reverse mt-10 sm:mt-0">
                 <Birthdays birthdays={birthdays} removeBirthday={removeBirthday}/>
                 <Form person={person} setPerson={setPerson} addBirthday={addBirthday} />
             </div>

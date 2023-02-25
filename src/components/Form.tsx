@@ -15,7 +15,7 @@ const Form: React.FC<IForm> = ({ person, setPerson, addBirthday }) => {
     }
 
     return (
-        <div className="h-72 flex flex-col justify-center items-center gap-6 px-5 border-2 border-black rounded-md">
+        <div className="h-72 flex flex-col justify-center items-center gap-6 px-5 border-2 border-black rounded-md pb-1 sm:pb-0">
             <h6 className="text-sm w-72">Enter the name and date of birth of the person whose birthday you want to remember.</h6>
             <div className="flex flex-col gap-4">
                 <input
