@@ -13,7 +13,13 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
         const birthMonth: string = personMonth
         const today: any = new Date()
         let nextYear: number
-        let birthDayText = <div className="bg-green-400 py-6">Happy Birthday {personName} !!!!</div>
+        let birthDayText = 
+        <li className="w-full flex items-center">
+                <div className="w-full relative text-center">
+                <div className="bg-green-400 py-6 w-full text-center">Happy Birthday {personName} !!!!</div>
+                    <button type="button" className="absolute right-2 top-1 text-lg bg-black text-white rounded-full w-5 h-5 grid place-content-center pb-0.5 z-10" onClick={() => removeBirthday(personId)}>x</button>
+                </div>
+            </li >
 
         /* if birthday already passed countdown from next year */
         /* if day and month both equals with todays time, return birthDayText */
