@@ -39,7 +39,7 @@ const Birthdays: React.FC<IBirthdayProps> = ({ birthdays, removeBirthday }) => {
                     <div className={days < 7 ? 'bg-red-400' : 'bg-blue-400'}>
                         <div className="text-lg">{personName}</div>
                         <div>
-                            {days < 10 ? '0' + days : days} days left. <br />
+                            {days < 10 ? `0${days}` : days} days left. <br />
                             Next birthday: {formattedCountDownDate}
                         </div>
                     </div>
