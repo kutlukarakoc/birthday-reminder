@@ -10,8 +10,15 @@ const Form: React.FC<IForm> = ({ person, setPerson, addBirthday }) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let name: string = e.target.name
-        let value: string = e.target.value
+        let value: string = removeLeadingZero(e.target.value)
         setPerson({ ...person, [name]: value })
+    }
+
+    const removeLeadingZero = (value: string): string => {
+        if (value.charAt(0) === "0") {
+            return value.substring(1)
+        } 
+        return value
     }
 
     return (
